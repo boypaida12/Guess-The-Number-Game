@@ -1,43 +1,76 @@
-//variables
-var score, guessRemaining, aiNum;
+let randomNum = Math.floor(Math.random() * 100 + 1);
+let tooClose = 5;
+// console.log(randomNum)
+let play = document.getElementById('play');
+let display = document.getElementById('display');
+let restart = document.getElementById('restart');
+let headingChange = document.getElementById('heading');
+let instructionBtn = document.getElementById('instructionsBtn');
+let instructionOverlay = document.getElementById('instructionsOverlay');
+let instructions = document.getElementById('instructions');
+let guessesRemaining = document.getElementById('guessesRemaining');
+let guessesLeft = 10;
 
-//functions
+instructionBtn.onclick = function() {
+    instructionOverlay.style.display = 'block';
+}
 
-function reset(){
-    score = 0;
-    guessRemaining = 5;
-    document.getElementById('score').innerHTML=score;
-    document.getElementById('guess-remaining').innerHTML=guessRemaining;
-    document.getElementById('ai-number').innerHTML='';
-    document.getElementById('user-number').innerHTML='';
-    document.getElementById('msg').innerHTML='Start';
-    document.getElementById('result').innerHTML='';
-    ai();
-};
+instructionOverlay.onclick = function() {
+    instructionOverlay.style.display = 'none';
+}
 
-function ai(){
-    aiNum = Math.floor(Math.random()*9)+1;
-};
 
-function user(n){
-    document.getElementById('user-number').innerHTML=n;
-    if(n==aiNum){
-        score++;
-        document.getElementById('msg').innerHTML='Correct  Make a new guess.';
-    }else{
-        document.getElementById('msg').innerHTML='Wrong Make a new guess.';
+function guessTheNumber(event){
+    event.preventDefault()
+    let input = document.getElementById('input').value;
+    input = parseInt(input);
+
+    if(input === randomNum){
+        display.innerHTML = 'You freed Purple Wiz!!🤩';
+        headingChange.innerHTML ='Purple Wiz says Thank You!';
+        document.body.classList.add('win'); 
+    }else if(guessesLeft === 1){
+        display.innerHTML = 'No More Guesses Left';
+        document.body.style.setProperty('--after-filter', '100%');
+        guessesRemaining.textContent = `Guesses Remaining: 0`;
     }
-    guessRemaining--;
-    displayResult();
-};
-
-function displayResult(){
-    document.getElementById('ai-number').innerHTML=aiNum;
-    document.getElementById('score').innerHTML=score;
-    document.getElementById('guess-remaining').innerHTML=guessRemaining;
-    if(guessRemaining==0){
-        document.getElementById('result').innerHTML='Your score: '+score+' out of 5Click RESET to play again.';
-    }else{
-        ai();
+    else if(input < 1 || input > 100){
+        display.innerHTML = "OUT OF RANGE 😒";
+        document.body.style.setProperty('--after-filter', '100%');
+    }else if(input < randomNum && (randomNum - input <= tooClose)) {
+        display.innerHTML = 'Very close!, but you are a little low 😲';
+        document.body.style.setProperty('--after-filter', '50%');
+        guessesLeft--;
+        guessesRemaining.textContent = `Guesses Remaining: ${guessesLeft}`;
+    }else if(input < randomNum) {
+        display.innerHTML = 'Too Low, Go Higher! 😮';
+        document.body.style.setProperty('--after-filter', '90%');
+        guessesLeft--;
+        guessesRemaining.textContent = `Guesses Remaining: ${guessesLeft}`;
+    }else if(input > randomNum && (input - randomNum <= tooClose)) {
+        display.innerHTML = 'Very close!, but you are a little high 😲';
+        document.body.style.setProperty('--after-filter', '50%');
+        guessesLeft--;
+        guessesRemaining.textContent = `Guesses Remaining: ${guessesLeft}`;
+    }else if(input > randomNum) {
+        display.innerHTML = 'Too High, Go Lower! 😮';
+        document.body.style.setProperty('--after-filter', '90%');
+        guessesLeft--;
+        guessesRemaining.textContent = `Guesses Remaining: ${guessesLeft}`;
+    }else {
+        display.innerHTML = 'PLEASE USE ONLY NUMBERS! 💯'
     }
-};
+}
+
+function restartGame(event) {
+    event.preventDefault()
+    randomNum = Math.floor(Math.random() * 100 + 1);
+    display.innerHTML = '';
+    display.classList.remove('winner');
+    document.body.classList.remove('win');
+    headingColor.classList.remove('heading-color');
+    document.body.style.setProperty('--after-filter', '100%');
+}
+
+
+   
