@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Guess the next number</title>
+        <title>Purple Wiz</title>
         <link href="styles.css" type="text/css" rel="stylesheet">
     </head>
-    <body onload="reset();">
-        <div class="output-container">
-            <div>AI: <span id="ai-number"></span></div>
-            <div>Your guess: <span id="user-number"></span></div>
-            <p id="msg"></p>
-            <p id="result"></p>
-        </div>
-        <div class="button-container">
-            <p>
-            <button id="btn-1" onclick="user(1);">1</button>
-            <button id="btn-2" onclick="user(2);">2</button>
-            <button id="btn-3" onclick="user(3);">3</button>
-            </p>
-            <p>
-            <button id="btn-4" onclick="user(4);">4</button>
-            <button id="btn-5" onclick="user(5);">5</button>
-            <button id="btn-6" onclick="user(6);">6</button>
-            </p>
-            <p>
-            <button id="btn-7" onclick="user(7);">7</button>
-            <button id="btn-8" onclick="user(8);">8</button>
-            <button id="btn-9" onclick="user(9);">9</button>
-            </p>
-        </div>
-        <div class="score-container">
-            <div>Score: <span id="score"></span></div>
-            <div>Guess remaining: <span id="guess-remaining"></span></div>
-            <button id="reset" onclick="reset();">Reset</button>
-        </div>
+    <body>
 
+        <div id="gameContainer" class="game-container">
+            <h1 id="heading">Help Set Purple Wiz Free</h1>
+            <span class="wiz-emoji" style="font-size: 5rem;">🧙🏼‍♂️</span>
+            <p id="display">Guess a number from 1-100</p>
+            <form action="">
+                <input id="input" type="text" value="">
+                <div class="buttons">
+                    <button id="play" class="play-btn" onclick="guessTheNumber(event)">Play</button>
+                    <button id="restart" class="restart-btn">Restart</button>
+                </div>
+            </form>
+        </div>
+        <div id="instructionsOverlay" class="instructions-overlay">
+            <div id="instructions" class="instructions slide-in-fwd-top">
+                <h2 class="instructions-center"><span style="font-size: 2.25rem;">😢</span>  Ooopsie!</h2>
+                <p> Grayscale has taken over the entire Purple Wiz Universe. The Evil Wizard cast a vanishing spell on the Purple Wiz Totem leaving the universe with no color. Your task is to restore the Purple Wiz Universe to it's true form. Bring back the Totem by finding the spell cast by Grayscale (It's a number from 1 to 100). </p>
+                <h2 class="instructions-center">You have 10 Guesses. Good Luck!</h2>
+            </div>
+        </div>
+        <div class="how-to-play">
+            <p id="instructionsBtn" class="pulsate-bck">How to Play</p>
+            <p id="guessesRemaining">Guesses Remaining: 10</p>
+        </div>
+        
 
         <script type="text/javascript" src="index.js"></script>
     </body>
