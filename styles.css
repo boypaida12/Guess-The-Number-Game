@@ -1,24 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
 
 body {
     min-height: 100vh;
+    max-width: 90rem;
+    position: relative;
+    margin-inline: auto;
 }
 
 body::after {
     content: '';
     position: fixed;
     top: 5rem;
-    left: 1%;
+    left: 13%;
+    max-width: 90rem;
     width: 100%;
     height: 100%;
     background-image: url('images/logo.png');
-    background-size: contain;
+    background-size: 90rem;
     background-repeat: no-repeat;
     z-index: -1;
     filter: grayscale(var(--after-filter, 100%));
@@ -109,6 +114,7 @@ h1 {
     box-shadow: 2px 7px 20px 2px rgba(0, 0, 0, 0.6);
 -webkit-box-shadow: 2px 7px 20px 5px rgba(0, 0, 0, 0.6);
 -moz-box-shadow: 2px 7px 20px 2px rgba(0, 0, 0, 0.6);
+
 }
 
 .win .game-container {
@@ -149,6 +155,12 @@ input {
     -moz-box-shadow: 2px 7px 13px 2px rgba(0, 0, 0, 0.747);
 }
 
+input::placeholder {
+    color: rgba(255, 255, 255, 0.33);
+    font-size: clamp(1.25rem, -1.0238rem + 7.619vw, 1.5rem);
+
+}
+
 .win input {
     color: rgb(148, 156, 255);
     border-color: rgb(148, 156, 255);
@@ -184,11 +196,11 @@ button {
 }
 
 .win button {
-    border: 3px solid rgb(148, 156, 255);;
+    border: 3px solid rgb(148, 156, 255);
     color: rgb(148, 156, 255);
-    box-shadow: 2px 7px 13px 2px rgb(148, 156, 255);;
-    -webkit-box-shadow: 0px 4px 1px 2px rgb(148, 156, 255);;
-    -moz-box-shadow: 2px 7px 13px 2px rgb(148, 156, 255);;
+    box-shadow: 2px 7px 13px 2px rgb(148, 156, 255);
+    -webkit-box-shadow: 0px 4px 1px 2px rgb(148, 156, 255);
+    -moz-box-shadow: 2px 7px 13px 2px rgb(148, 156, 255);
 }
 
 button:hover,
@@ -208,8 +220,6 @@ button:focus {
 }
 
 .how-to-play {
-    /* display: inline-flex; */
-    gap: 15rem;
     position: absolute;
     top: 2rem;
     right: 5%;
@@ -236,7 +246,7 @@ button:focus {
     -moz-box-shadow: 0px 4px 1px 2px rgb(148, 156, 255);
 }
 
-.how-to-play p:first-child {
+.how-to-play p:first-child, .win .how-to-play p:first-child {
     position: absolute;
     left: -247%;
     top: 9rem;
@@ -249,13 +259,8 @@ button:focus {
     font-weight: 700;
 }
 
-.win .how-to-play p:first-child {
-    border: none;
-    box-shadow: none;
-}
-
 .how-to-play p:first-child:hover {
-    animation: none;
+    animation-play-state: paused;
 }
 
 .pulsate-bck {
@@ -304,6 +309,7 @@ button:focus {
     height: 100%;
     background-color: rgba(0, 0, 0, .6);
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     z-index: 1000;   
 }
 
@@ -317,9 +323,9 @@ button:focus {
     line-height: 1.8;
     filter: grayscale(100%);
     border-radius: 1rem;
-    box-shadow: 2px 7px 20px 5px rgba(0, 0, 0, 0.6);
+    box-shadow: 2px 7px 30px 5px rgba(0, 0, 0, 0.6);
     -webkit-box-shadow: 2px 7px 30px 5px rgba(0, 0, 0, 0.6);
-    -moz-box-shadow: 2px 7px 20px 5px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 2px 7px 30px 5px rgba(0, 0, 0, 0.6);
 }
 
 .slide-in-fwd-top {
@@ -366,7 +372,8 @@ button:focus {
 /* Mobile Responsiveness */
 @media screen and (max-width:425px) {
     body::after {
-        top: 3rem;
+        top: 5rem;
+        background-size: 100vw;
     }
 
     .game-container {
@@ -403,18 +410,80 @@ button:focus {
         margin-top: 1rem;
         font-size: 1rem;
     }
+
+    .how-to-play {
+        top: 2%;
+    }
+
+    .how-to-play p, .how-to-play p:first-child {
+        font-size: clamp(0.5rem, -1.0238rem + 7.619vw, 1rem);
+    }
+
+    .how-to-play p:first-child {
+        left: -10rem;
+        top: 0;
+    }
+
+    .instructions {
+    top: 1rem;
+    left: 1.5rem;
+    width: 90%;
+    text-align: center;
+    }
+
 }
 
 @media screen and (min-width:768px) and (max-width:1023px) {
+    body::after {
+        left: 1%;
+        background-size: 100vw;
+    }
+
     .game-container {
         width: 93%;
         height: 52%;
         top: 45%;
     }
+
+    .how-to-play p:first-child {
+        left: -28rem;
+        top: 0;
+    }
+
+    .instructions {
+    top: 15rem;
+    left: 7rem;
+    width: 70%;
+    }
 }
+
 @media screen and (min-width:1024px) and (max-width:1344px) {
+    body::after {
+        left: 1%;
+        background-size: 100vw;
+
+    }
+
     .game-container {
         width: 48%;
     }
+
+    .how-to-play p:first-child {
+        left: -22.5rem;
+        top: 7rem;
+    }
+
+    .instructions {
+    top: 15rem;
+    left: 15rem;
+    width: 50%;
+    }
 }
+
+@media screen and  (max-width: 1440px) {
+    body::after {
+        left: 1%;
+    }
+}
+
 
