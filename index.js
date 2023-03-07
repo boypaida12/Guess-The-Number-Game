@@ -1,6 +1,5 @@
 let randomNum = Math.floor(Math.random() * 100 + 1);
 let tooClose = 5;
-// console.log(randomNum)
 let play = document.getElementById('play');
 let display = document.getElementById('display');
 let restart = document.getElementById('restart');
