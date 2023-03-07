@@ -1,36 +1,52 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Purple Wiz</title>
-        <link href="styles.css" type="text/css" rel="stylesheet">
-    </head>
-    <body>
-
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="main-container">
+        <div class="how-to-play">
+            <p id="instructionsBtn" class="pulsate-bck">How to Play</p>
+            <p id="guessesRemaining">Guesses Remaining: 10</p>
+        </div>
+        <div class="image-container">
+            <img src="images/logo.png" alt="logo">
+        </div>
         <div id="gameContainer" class="game-container">
             <h1 id="heading">Help Set Purple Wiz Free</h1>
             <span class="wiz-emoji" style="font-size: 5rem;">🧙🏼‍♂️</span>
             <p id="display">Guess a number from 1-100</p>
             <form action="">
-                <input id="input" type="text" value="">
+                <input id="input" type="text" placeholder="Type Number Here">
                 <div class="buttons">
                     <button id="play" class="play-btn" onclick="guessTheNumber(event)">Play</button>
                     <button id="restart" class="restart-btn">Restart</button>
                 </div>
             </form>
         </div>
-        <div id="instructionsOverlay" class="instructions-overlay">
+    </div>
+    <div id="instructionsOverlay" class="instructions-overlay">
+        <div class="instructions-container">
             <div id="instructions" class="instructions slide-in-fwd-top">
-                <h2 class="instructions-center"><span style="font-size: 2.25rem;">😢</span>  Ooopsie!</h2>
+                <h2 class="instructions-center"><span class="sad-emoji" style="font-size: 2.25rem;">😢</span>  Ooopsie!</h2>
                 <p> Grayscale has taken over the entire Purple Wiz Universe. The Evil Wizard cast a vanishing spell on the Purple Wiz Totem leaving the universe with no color. Your task is to restore the Purple Wiz Universe to it's true form. Bring back the Totem by finding the spell cast by Grayscale (It's a number from 1 to 100). </p>
                 <h2 class="instructions-center">You have 10 Guesses. Good Luck!</h2>
             </div>
         </div>
-        <div class="how-to-play">
-            <p id="instructionsBtn" class="pulsate-bck">How to Play</p>
-            <p id="guessesRemaining">Guesses Remaining: 10</p>
+    </div>
+    <div id="totemOverlay" class="totem-overlay">
+        <div class="totem-container">
+            <span class="totem">🧙🏼‍♂️</span>
         </div>
+    </div>
+    
         
+   
 
-        <script type="text/javascript" src="index.js"></script>
-    </body>
+    <script src="index.js"></script>
+</body>
 </html>

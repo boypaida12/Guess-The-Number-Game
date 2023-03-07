@@ -1,6 +1,5 @@
 let randomNum = Math.floor(Math.random() * 100 + 1);
 let tooClose = 5;
-// console.log(randomNum)
 let play = document.getElementById('play');
 let display = document.getElementById('display');
 let restart = document.getElementById('restart');
@@ -9,6 +8,7 @@ let instructionBtn = document.getElementById('instructionsBtn');
 let instructionOverlay = document.getElementById('instructionsOverlay');
 let instructions = document.getElementById('instructions');
 let guessesRemaining = document.getElementById('guessesRemaining');
+let totemOverlay = document.getElementById('totemOverlay');
 let guessesLeft = 10;
 
 instructionBtn.onclick = function() {
@@ -29,6 +29,10 @@ function guessTheNumber(event){
         display.innerHTML = 'You freed Purple Wiz!!🤩';
         headingChange.innerHTML ='Purple Wiz says Thank You!';
         document.body.classList.add('win'); 
+        document.body.style.setProperty('--after-filter', '0%');
+        document.querySelector('.totem-overlay').style.display = 'block';
+        document.querySelector('.instructions-overlay').style.display = 'none'; 
+
     }else if(guessesLeft === 1){
         display.innerHTML = 'No More Guesses Left';
         document.body.style.setProperty('--after-filter', '100%');
@@ -65,12 +69,8 @@ function guessTheNumber(event){
 function restartGame(event) {
     event.preventDefault()
     randomNum = Math.floor(Math.random() * 100 + 1);
-    display.innerHTML = '';
-    display.classList.remove('winner');
     document.body.classList.remove('win');
-    headingColor.classList.remove('heading-color');
     document.body.style.setProperty('--after-filter', '100%');
 }
-
 
    
