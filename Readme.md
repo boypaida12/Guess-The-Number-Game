@@ -1,1 +1,1 @@
-## Guess The Number Game
+## GUESS THE GAME DEMO (FIRST JS APPLICATION)
